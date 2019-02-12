@@ -11,13 +11,13 @@ def load_data(filepath):
         lines = file.read()
     return lines
 
-def get_most_frequent_words(python_object):
+
+def get_most_frequent_words(python_object, times):
     try:
         count_words = Counter(python_object.split())
     except AttributeError:
         return None
-    return count_words.most_common(10)
-
+    return count_words.most_common(times)
 
 
 if __name__ == '__main__':
@@ -26,4 +26,4 @@ if __name__ == '__main__':
     python_object = load_data(argv[1])
     if not python_object:
         exit("Укажите верный путь к файлу")
-    print(get_most_frequent_words(python_object))
+    print(get_most_frequent_words(python_object, 10))
