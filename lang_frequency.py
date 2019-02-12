@@ -12,9 +12,9 @@ def load_data(filepath):
     return lines
 
 
-def get_most_frequent_words(python_object):
+def get_most_frequent_words(python_object, number_pop_words):
     try:
-        return Counter(python_object.split()).most_common(10)
+        return Counter(python_object.split()).most_common(number_pop_words)
     except AttributeError:
         return None
 
@@ -25,4 +25,5 @@ if __name__ == '__main__':
     python_object = load_data(argv[1])
     if not python_object:
         exit("Укажите верный путь к файлу")
-    print(get_most_frequent_words(python_object))
+    number_pop_words = int(input("How much popular words in text you need?"))
+    print(get_most_frequent_words(python_object, number_pop_words))
